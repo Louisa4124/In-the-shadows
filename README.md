@@ -6,5 +6,5 @@ A shadowmatic like game, made with Unity
 
 ## Demo
 
-https://github.com/Louisa4124/In-the-shadows/blob/main/In%20The%20Shadows%20Demo.mp4
+https://github.com/user-attachments/assets/eae1947d-b58a-4368-be4b-f3c5105fb93b
 
