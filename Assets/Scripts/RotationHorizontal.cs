@@ -1,4 +1,7 @@
+using System.Collections; 
 using UnityEngine;
+using UnityEngine.SceneManagement; 
+
 
 public class ObjectRotationHorizontal : MonoBehaviour
 {
@@ -14,6 +17,7 @@ public class ObjectRotationHorizontal : MonoBehaviour
     public float colorTransitionDuration = 1f;
     public Animator animator;
     public float dragMouse = 0.5f;
+    public string sceneName;
 
 
     private bool canRotate = true;
@@ -89,7 +93,8 @@ public class ObjectRotationHorizontal : MonoBehaviour
             }
 
             cameraManager.SwitchToVictoryCamera();
-
+            // a changer !!
+            LoadNextSceneWithDelay();
         }
 
         if (triggerAnimation == 1)
@@ -98,6 +103,7 @@ public class ObjectRotationHorizontal : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("win");
             triggerAnimation = 2;
+            IncrementUnlockedLevelCount();
         }
 
         Vector3 currentRotation = transform.eulerAngles;
@@ -117,4 +123,25 @@ public class ObjectRotationHorizontal : MonoBehaviour
         transitionTimer += Time.deltaTime;
         float t = Mathf.PingPong(transitionTimer / colorTransitionDuration, 1f);
     }
+
+    public void IncrementUnlockedLevelCount()
+    {
+        int currentCount = PlayerPrefs.GetInt("UnlockedLevelCount", 1);
+
+        currentCount++;
+        PlayerPrefs.SetInt("UnlockedLevelCount", currentCount);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadNextSceneWithDelay()
+	{
+		StartCoroutine(LoadSceneAfterDelay(5f)); 
+	}
+
+	private IEnumerator LoadSceneAfterDelay(float delay)
+	{
+		yield return new WaitForSeconds(delay); 
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = true;
+	}
 }

@@ -12,7 +12,12 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
-        SwitchToMainCamera();
+        mainCamera.gameObject.SetActive(false);
+        victoryCamera.gameObject.SetActive(false);
+        IntroCamera.gameObject.SetActive(true);
+        ExitCamera.gameObject.SetActive(false);
+        // SwitchToMainCamera();
+        Invoke("SwitchToMainCamera", 0.05f);
     }
 
     public void SwitchToMainCamera()

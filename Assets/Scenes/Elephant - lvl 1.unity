@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 3
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -5961,8 +5961,6 @@ GameObject:
   - component: {fileID: 1296853402}
   - component: {fileID: 1296853401}
   - component: {fileID: 1296853400}
-  - component: {fileID: 1296853404}
-  - component: {fileID: 1296853405}
   - component: {fileID: 1296853406}
   m_Layer: 0
   m_Name: Main Camera
@@ -6089,44 +6087,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -57.799, y: 269.617, z: -360.332}
---- !u!114 &1296853404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296853399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0aec9a53d4853d4ea31544e921e0395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitude: 0.5
-  frequency: 0.2
-  rotationAmplitude: {x: 1, y: 1.5, z: 0}
-  rotationSpeed: 0.5
---- !u!95 &1296853405
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296853399}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 314d6ec35a0768544b301075d4de80fc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1296853406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6762,6 +6722,7 @@ MonoBehaviour:
   colorTransitionDuration: 1
   animator: {fileID: 505702791}
   dragMouse: 0.5
+  sceneName: Level Selection
   cameraManager: {fileID: 1860333314}
 --- !u!4 &1860333312 stripped
 Transform:
@@ -7187,8 +7148,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1296853403}
-  - {fileID: 1035362292}
   - {fileID: 48569668}
+  - {fileID: 1035362292}
   - {fileID: 192710341}
   - {fileID: 955098483}
   - {fileID: 604712594}
