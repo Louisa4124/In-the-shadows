@@ -8,6 +8,5 @@ public class CubeClickHandler : MonoBehaviour
     {
         if (resetManager != null)
             resetManager.OnResetButtonClick();
-
     }
 }
