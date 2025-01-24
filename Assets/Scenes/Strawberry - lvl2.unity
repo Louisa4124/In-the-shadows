@@ -507,7 +507,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: 16384
+    m_Resolution: 8192
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05

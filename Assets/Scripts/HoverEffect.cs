@@ -13,16 +13,28 @@ public class HoverDetection : MonoBehaviour
 	public Animator targetAnimator;
 	public GameObject resolvedObject;
 	public GameObject lockedObject;
+	public AudioClip hoverSound;
+	public float hoverSoundVolume = 0.5f;
 
 
 	private Vector3 originalScale;
 	private Vector3 targetScale;
 	private bool isMouseOver = false;
 	private Quaternion originalRotation;
+	private AudioSource audioSource;
+	private bool hasPlayedHoverSound = false;
 
 	void Start()
 	{
 		originalRotation = transform.parent.rotation;
+
+		audioSource = GetComponent<AudioSource>();
+		if (audioSource == null)
+		{
+			audioSource = gameObject.AddComponent<AudioSource>();
+		}
+		audioSource.playOnAwake = false;
+		audioSource.volume = hoverSoundVolume;
 	}
 
 	void Update()
@@ -44,11 +56,17 @@ public class HoverDetection : MonoBehaviour
 				LoadNextSceneWithDelay();
 			}
 			// Debug.Log(PlayerPrefs.GetInt("UnlockedLevelCount", 1));
+
+			if (!hasPlayedHoverSound && hoverSound != null && audioSource != null)
+			{
+				audioSource.PlayOneShot(hoverSound, hoverSoundVolume);
+				hasPlayedHoverSound = true;
+			}
 		}
 		else
 		{
-			// Revenir à la rotation d'origine (0, 0, 0)
 			transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, originalRotation, Time.deltaTime * lerpSpeed);
+			hasPlayedHoverSound = false; 
 		}
 	}
 

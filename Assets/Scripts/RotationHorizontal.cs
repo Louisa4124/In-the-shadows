@@ -1,6 +1,6 @@
-using System.Collections; 
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 
 public class ObjectRotationHorizontal : MonoBehaviour
@@ -18,6 +18,8 @@ public class ObjectRotationHorizontal : MonoBehaviour
     public Animator animator;
     public float dragMouse = 0.5f;
     public string sceneName;
+    public AudioClip winSound;
+    public float winSoundVolume = 0.3f;
 
 
     private bool canRotate = true;
@@ -25,14 +27,22 @@ public class ObjectRotationHorizontal : MonoBehaviour
     private int triggerAnimation = 0;
     private float transitionTimer = 0f;
     private bool hasPlayed = false;
-
     [SerializeField] private CameraManager cameraManager;
+    private AudioSource audioSource;
 
     void Start()
     {
         Vector3 initialRotation = transform.eulerAngles;
         initialRotation.y = 120f;
         transform.eulerAngles = initialRotation;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
+        audioSource.volume = winSoundVolume;
     }
 
     void Update()
@@ -69,6 +79,11 @@ public class ObjectRotationHorizontal : MonoBehaviour
         {
             HandleWinningLight();
 
+            if (winSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(winSound);
+            }
+
             float currentRotationY = NormalizeAngle(transform.eulerAngles.y);
             if (Mathf.Abs(currentRotationY - targetRotationY) > 0.1f)
             {
@@ -94,7 +109,8 @@ public class ObjectRotationHorizontal : MonoBehaviour
 
             cameraManager.SwitchToVictoryCamera();
             // a changer !!
-            LoadNextSceneWithDelay();
+            // if (Input.GetMouseButton(0))
+            //     LoadNextSceneWithDelay();
         }
 
         if (triggerAnimation == 1)
@@ -128,20 +144,21 @@ public class ObjectRotationHorizontal : MonoBehaviour
     {
         int currentCount = PlayerPrefs.GetInt("UnlockedLevelCount", 1);
 
-        currentCount++;
+        if (currentCount < 2)
+            currentCount++;
         PlayerPrefs.SetInt("UnlockedLevelCount", currentCount);
         PlayerPrefs.Save();
     }
 
     public void LoadNextSceneWithDelay()
-	{
-		StartCoroutine(LoadSceneAfterDelay(5f)); 
-	}
+    {
+        StartCoroutine(LoadSceneAfterDelay(5f));
+    }
 
-	private IEnumerator LoadSceneAfterDelay(float delay)
-	{
-		yield return new WaitForSeconds(delay); 
+    private IEnumerator LoadSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = true;
-	}
+    }
 }

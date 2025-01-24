@@ -359,7 +359,7 @@ RectTransform:
   m_GameObject: {fileID: 194566267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 10}
+  m_LocalScale: {x: 4, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 71943352}
@@ -1272,6 +1272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftImage: {fileID: 1277947714}
   rightImage: {fileID: 2078581480}
+  hoverSound: {fileID: 8300000, guid: 9a87296d1a31d5a40a1316cabfb07051, type: 3}
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1378,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1547,6 +1548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftImage: {fileID: 2056282318}
   rightImage: {fileID: 1543488114}
+  hoverSound: {fileID: 8300000, guid: 9a87296d1a31d5a40a1316cabfb07051, type: 3}
 --- !u!1 &1114285370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftImage: {fileID: 656568343}
   rightImage: {fileID: 609331964}
+  hoverSound: {fileID: 8300000, guid: 9a87296d1a31d5a40a1316cabfb07051, type: 3}
 --- !u!114 &1375928979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2445,6 +2448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftImage: {fileID: 2056282318}
   rightImage: {fileID: 1918411795}
+  hoverSound: {fileID: 0}
 --- !u!114 &1918411797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2640,6 +2644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftImage: {fileID: 1114285370}
   rightImage: {fileID: 1918411795}
+  hoverSound: {fileID: 8300000, guid: 9a87296d1a31d5a40a1316cabfb07051, type: 3}
 --- !u!1 &2056282318
 GameObject:
   m_ObjectHideFlags: 0
