@@ -59,7 +59,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ## Credits
 
-- **Developer**: Louisa4124
+- **Developer**: @Louisa4124
 - **Inspiration**: *Shadowmatic* by Triada Studio Games
 - **Assets**: /!\ wip
 
